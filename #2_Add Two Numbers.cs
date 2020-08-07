@@ -23,20 +23,20 @@ namespace P2
                 it = it.next;
             }
         }
-    } 
+    }
 
     public class ListNode
     {
         public int val;
         public ListNode next;
-        public ListNode (int val = 0, ListNode next = null)
+        public ListNode(int val = 0, ListNode next = null)
         {
             this.val = val;
             this.next = next;
         }
     }
 
-    public class Solution 
+    public class Solution
     {
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
@@ -55,7 +55,7 @@ namespace P2
                 else if (itL2 == null)
                 {
                     sum += itL1.val;
-                    itL1 = itL1.next;  
+                    itL1 = itL1.next;
                 }
                 else
                 {

@@ -12,11 +12,11 @@ namespace P5
         }
     }
 
-    public class Solution 
+    public class Solution
     {
-        public string LongestPalindrome(string s) 
+        public string LongestPalindrome(string s)
         {
-            bool[,] table = new bool[s.Length, s.Length]; 
+            bool[,] table = new bool[s.Length, s.Length];
             string result;
             if (s.Equals(""))
             {
@@ -41,7 +41,7 @@ namespace P5
                     }
                 }
             }
-            return result;    
+            return result;
         }
 
         public string Manacher(string s)
@@ -49,7 +49,7 @@ namespace P5
             int sLength = s.Length;
             if (sLength < 2)
             {
-                return s;                
+                return s;
             }
             string markedString = "#";
             for (int i = 0; i < sLength; i++)
@@ -94,5 +94,5 @@ namespace P5
             }
             return s.Substring((maxIndex - radius[maxIndex]) / 2, radius[maxIndex]);
         }
-    }   
+    }
 }

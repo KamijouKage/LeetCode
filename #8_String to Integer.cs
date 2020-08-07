@@ -56,7 +56,7 @@ namespace P8
             }
             catch (System.OverflowException)
             {
-                return (sign == '-')? int.MinValue : int.MaxValue;
+                return (sign == '-') ? int.MinValue : int.MaxValue;
             }
         }
     }

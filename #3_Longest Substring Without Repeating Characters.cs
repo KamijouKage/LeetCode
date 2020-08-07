@@ -12,9 +12,9 @@ namespace P3
         }
     }
 
-    public class Solution 
+    public class Solution
     {
-        public int LengthOfLongestSubstring(string input) 
+        public int LengthOfLongestSubstring(string input)
         {
             int longestLength = 1;
             int windowStr = 0;

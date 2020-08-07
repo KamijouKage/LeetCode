@@ -11,9 +11,9 @@ namespace P1
         }
     }
 
-    public class Solution 
+    public class Solution
     {
-        public int[] TwoSum(int[] nums, int target) 
+        public int[] TwoSum(int[] nums, int target)
         {
             Dictionary<int, int> map = new Dictionary<int, int>();
             for (int i = 0; i < nums.Length; i++)
@@ -21,7 +21,7 @@ namespace P1
                 int complement = target - nums[i];
                 if (map.ContainsKey(complement))
                 {
-                    return new int[] {map[complement], i};
+                    return new int[] { map[complement], i };
                 }
                 if (!map.ContainsKey(nums[i]))
                 {
