@@ -168,7 +168,7 @@
 6. 回傳紀錄的最大值
 
 ## #13_Roman to Integer
-###### Related Topics: `Math`, `String`
+###### Related Topics: `Math`、`String`
 ### 目標
 輸入羅馬數字字串s回傳int
 | I   | V   | X   | L   | C   | D   | M    |
@@ -184,3 +184,30 @@
 4. 相加完檢查s[i]是不是小於s[i+1]是的話要把上面的值\*2減回去才是正確結果
 5. 重新定位sameCharStr為i+1
 6. s[i]==s[i+1]就可以跳過不處理，因為要取i+1所以迴圈值能到s.Length-2，這樣迴圈結束後還要再做一次累加才可以回傳
+
+## #14_Longest Common Prefix
+###### Related Topics: `String`
+### 目標
+給一個string陣列strs，回傳最長的共同前綴
+### 求解
+1. 特例，陣列數量0值接回傳空字串；1則值接回傳唯一字串
+2. 垂直搜尋，宣告length作為截取答案的長度跟搜尋的index
+3. 每輪取strs[0][length]當比對字元，再來用比對strs[1]\~strs[strs.Length-1]
+4. 這個過程用try catch包起來，如果有意外代表IndexOfRange，可以直接回傳任一字串的sub(0, length)
+
+## #15_3Sum
+###### Related Topics: `Hash Table`
+### 目標
+給一個int陣列nums找出所有3個數合為0的組合(不可重複)
+### 求解
+1. 從暴力法O(n<sup>3</sup>)降到O(n<sup>2</sup>)方式可以參考#1
+2. 把nums排序成sortedNums
+3. 把sortedNums數的後面放進Dictionary裡(sortedNUms[i], i)，Key重複跳過
+4. 第一層迴圈的i決定可能組合的第一個數
+    - 如果大於0那就可以中斷迴圈，因為除了0,0,0外的組合一定有正數有負數
+    - 如果跟前面一個數一樣跳過避免重複
+5. 內迴圈j開始就跟#1類似，不過Dictionary已經在上面建好了就不用每輪i迴圈重建
+    - 如果跟前面一個數一樣跳過避免重複
+    - x+y+z=0 → y+z=-x 所以可以把-x當成#1的target，那要找的目標就是-x-y
+    - 如果Dictionary有-x-y這個Key而且對應的index比j大，那就是一個不重複的解。建立Dictionary要從後面來是避免0,0,0這樣的情況，i=0, j=1, index從前面數是0，從後面是2
+    - 這裡不用Dictionary，用sortedNums.LastIndexOf也是一樣意思但是速度會差很多，是AC跟超時的差距
