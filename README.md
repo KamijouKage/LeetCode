@@ -211,3 +211,41 @@
     - x+y+z=0 → y+z=-x 所以可以把-x當成#1的target，那要找的目標就是-x-y
     - 如果Dictionary有-x-y這個Key而且對應的index比j大，那就是一個不重複的解。建立Dictionary要從後面來是避免0,0,0這樣的情況，i=0, j=1, index從前面數是0，從後面是2
     - 這裡不用Dictionary，用sortedNums.LastIndexOf也是一樣意思但是速度會差很多，是AC跟超時的差距
+
+## #17_Letter Combinations of a Phone Number
+###### Related Topics: `String`、`Backtracking`
+### 目標
+給一串由2\~9組成的字串digits，每個數可以對應3\~4個英文字母，回傳所有可能的英文字串
+| 2   | 3   | 4   | 5   | 6   | 7    | 8   | 9    |
+| --- | --- | --- | --- | --- | ---- | --- | ---- |
+| abc | def | ghi | jkl | mno | pqrs | tuv | wxyz |
+### 求解
+1. digits長度0直接回傳空List
+2. 建立數字對應英文的Dictionary
+3. 先做一輪迴圈把第一個數字的對應放進List裡
+4. 再來會做一個三層迴圈，第一層i是指digits的2\~Length的數字
+5. 第二層j是指目前List有的數量，接下來每個element都回串上digits[i]的不同對應字母
+6. 第三層k就是把element串上不同對應字母再加入List
+7. 因為舊的element還是不完全的組合所以記得要移除，但是迴圈中移除element又加入新的進去會形成無窮，所以j的中止條件不能用List.Count而是要用變數存著當下的Count來當條件。再來是移除的另一個影響，下個j會指到的element會到0的位置，所以取值移除的index用0就好
+
+## #19_Remove Nth Node From End of List
+###### Related Topics: `Linked List`
+### 目標
+給一個LinkedList head跟n，把倒數第n個node移除再回傳回去
+### 求解
+- two pass: 先做一次搜尋得出head的長度，第二次就能確定要移除的node是哪個然後操作LinkedList達成目的
+- one pass: 
+    1. 宣告target(要移除的node)、preTarget、it(遍訪用的node)
+    2. n的最小值會是List的長度不用擔心無解，假設it位在最後一個node上，那往前算n-1個就會是target要在的位置
+    3. 一開始先做迴圈讓it前進n-1次，target設為head，之後讓target跟著it前移直到it到最後node的位置上，preTarget記得更新
+    4. 如果preTarget是null代表n就是List長度，要移除的是head回傳head.next；否則把preTarget.next換成Target.next後回傳head
+
+## #20_Valid Parentheses
+###### Related Topics: `Stack`
+### 目標
+給一個由()、{}、[] 組成的字串s，回傳s裡的括弧是否都有匹配
+### 求解
+1. s.Length==0，回傳True
+2. 把s[0]push進stack
+3. 之後掃描2\~Length字元，跟peek的字元成對做pop，沒有做push
+4. 結束後stack為空代表True
