@@ -249,3 +249,78 @@
 2. 把s[0]push進stack
 3. 之後掃描2\~Length字元，跟peek的字元成對做pop，沒有做push
 4. 結束後stack為空代表True
+
+## #21_Merge Two Sorted Lists
+###### Related Topics: `Linked List`
+### 目標
+合併兩個有序List a, b為一個有序List
+### 求解
+1. 宣告回傳ListNode result跟串接新node用的it
+2. 第一次迴圈，a, b任一為空就結束，過程中取較小node的值當it的新next，it跟被取直的List做next
+3. 第二、三次迴圈就是把a, b剩下的node接上去，最後回傳
+
+## #22_Generate Parentheses
+###### Related Topics: `Backtracking`
+### 目標
+給一個數n，回傳所有可能的n對括號擺法，例如3:
+1. ((()))
+2. (()())
+3. (())()
+4. ()(())
+5. ()()()
+### 求解
+1. 因為能不能放置左括號或右括號有些條件限制，所以直接用迴圈產生會不太好寫，這邊使用遞迴
+2. 遞迴需要的資訊
+    - 傳址IList，回傳的是所有的組合，所以遞迴到任一解時要加入相同的容器中
+    - 括號字串: current
+    - 還可以擺放的左括號數量: l
+    - 同上，右括號數量: r
+3. 遞迴規則
+    - 一開始current="", l=n, r=n
+    - 當l, r都歸零代表括號擺放完，把current加入IList
+    - 當l不為零，遞迴current+"(", l-1
+    - 當右括號數量大於左括號，代表右括號放下去是有配對的，遞迴current+")", r-1
+
+## #23_Merge k Sorted Lists
+###### Related Topics: `Linked List`、`Heap`
+### 目標
+給k個有序List合併為一個有序List
+### 求解
+1. 這邊用使用MinHeap的解法，C#沒有內建這樣的容器，需要自己時做能Insert、Pop的MinHeap
+2. 先把所有不為null的list insert進heap
+3. 直到heap空為止，pop出來的node(temp)值當作回傳list的next，然後把temp的next再insert回heap
+
+## #26_Remove Duplicates from Sorted Array
+###### Related Topics: `Array`、`Two Point`
+### 目標
+給一個int陣列nums，求出不重複的數字數量n，然後把陣列前n個位置調整成那些不重複的數，例如[0,0,1,1,1,2,2,3,3,4]→[0,1,2,3,4,...]剩下的無所謂
+### 求解
+1. 如果是空陣列直接回傳0
+2. 回傳值result預設為1
+3. 迴圈比對nums[i]跟nums[i+1]，不同就把nums[result]的值設為nums[i+1]，因為result是目前不重複的數量，同時也可用當成不重複數值插進來的位置，之後result++
+4. 結束後回傳result，伺服器那邊會比對nums的前result個值合不合要求
+
+## #28_Implement strStr()
+###### Related Topics: `String`、`Two Point`
+### 目標
+給兩個字串haystack, needle，求needle在haystack中出現的位置，例如hello, ll回傳2
+### 求解
+1. 迴圈比對的終點是i<=haystack.Lenght-needle.Length，在大needle會超出去
+2. haystack.subString(i, needle.Length)跟needle相同就可以回傳i
+3. 迴圈結束代表沒有對應回傳-1
+
+## #29_Divide Two Integers
+###### Related Topics: `Math`、`Binary Search`
+### 目標
+給被除數dividend跟除數divisor，回傳商。環境在bit32下，溢位回傳int.MaxValue(比如果int.MinValue/-1這樣會得到int.MaxValue+1這個值)。另外要求不使用*/%運算子
+### 求解
+1. 兩數相等回傳1
+2. 被除數0或除數是int.MinValue(Min絕對值比Max還多1商必為0)，回傳0
+3. 求商的正負號
+4. 除數先套上絕對值(處理掉符號的bit)
+6. 如果被除數是int.MinValue先做一次跟除數的相加，再套絕對值避免溢位(這步驟要紀錄是否發生)
+7. 找商的核心: 被除數可以由數個除數\*2<sup>n</sup>相加再加餘數組成，例如87=7\*2<sup>3</sup>+7\*2<sup>2</sup>+3。其中2的部分總和就是商。實作上就是把2<sup>n</sup>找出來給被除數減直到被除數小於除數。
+    1. 第一層迴圈，條件被除數大於等於除數，宣告一個temp設為除數，跟一個mul代表2<sup>n</sup>，進第二層迴圈找目標，出來後被除數減temp，mul累加
+    2. 第二層迴圈，條件被除數大於等於temp<<1跟temp<<1大於0(數太大<<移位會產生負號，這時先跳出累加)，符合條件就讓temp跟mul<<
+8. 出來後要先檢查5.有沒有發生還有累加結果是不是int.Max，都是再檢查商的正負號看是回傳Max或Min
+9. 8.沒有就回傳正負號\*(累加+5.有發生累計1)
