@@ -7,7 +7,7 @@
 [![hackmd-github-sync-badge](https://hackmd.io/NBIF1YT4QtmSJ3Ju1r4ljQ/badge)](https://hackmd.io/NBIF1YT4QtmSJ3Ju1r4ljQ)
 
 ## #1_Two Sum 
-###### Related Topics: `Hash Table`
+###### Related Topics: `Array`、`Hash Table`
 ### 目標
 給一個int陣列nums跟一個int target，nums當中會有兩個值合為target，且是唯一解
 求那兩個值在nums中的index n, m，然後回傳int[] {n, m}
@@ -17,7 +17,7 @@
     尋找合為target的兩數這件是其實相當於尋找target減去nums某值得到的數X存不存在nums中，所以可以思考把nums的數存成一個Dictionary，key是數值value是對應的index，這樣可以在一層迴圈中一邊建表一邊搜尋X來把問題解決
 
 ## #2_Add Two Numbers
-###### Related Topics: `Linked List`
+###### Related Topics: `Linked List`、`Math`、`Recursion`
 ### 目標
 給兩個LinkedList，將兩邊的Node各別相加串成新的LinkedList回傳，如果相加超過10則要進位給下個Node，可能會有兩個LinkedList長度不一樣的情況
 ### 求解
@@ -34,7 +34,7 @@
     3. 如果你用了上面的方法，這樣可能會漏掉最後一次的進位所以迴圈結束要檢查sum有沒有值要不要串next
 
 ## #3_Longest Substring Without Repeating Characters
-###### Related Topics: `Sliding Window`
+###### Related Topics: `Hash Table`、`Two Pointers`、`String`、`Sliding Window`
 ### 目標
 給一個字串s，找出最長不含重複字元的substring長度
 ### 求解
@@ -56,7 +56,7 @@
         5. 迴圈結束回傳maxLength
 
 ## #4_Median of Two Sorted Arrays
-###### Related Topics: `Binary Search`
+###### Related Topics: `Array`、`Binary Search`、`Divide and Conquer`
 ### 目標
 給兩個int陣列nums1, nums2求兩陣列合併後的中位數(有序數列中間的數或兩數平均)
 ### 求解
@@ -77,7 +77,7 @@
     12. 找切點的方式就是使用二元搜尋，當找到的位置可以符合6.就可以利用7.8.9.得出答案
 
 ## #5_Longest Palindromic Substring
-###### Related Topics: `Dynamic Programming`、`Manacher's Algorithm`
+###### Related Topics: `String`、`Dynamic Programming`
 ### 目標
 給一個字串s，求出最長的回文(字串左右對稱)subString
 ### 求解
@@ -117,7 +117,7 @@
 4. 累加的數乘10在把這輪的尾數加上去
 
 ## #8_String to Integer
-###### Related Topics: `String`
+###### Related Topics: `Math`、`String`
 ### 目標
 給一個字串str轉換成數字
 - 開頭的空白可以接受，欲到正負號或者數字後不行
@@ -134,7 +134,7 @@
 8. 如果catch就是益位，看sign來選擇回傳int.max或int.min
 
 ## #10_Regular Expression Matching
-###### Related Topics: `Dynamic Programming`
+###### Related Topics: `String`、`Dynamic Programming`、`Backtracking`
 ### 目標
 給一個字串s跟一個表達式p，回傳有沒有匹配
 - s必定由a\~z組成或者是空字串
@@ -156,7 +156,7 @@
     - 最後回傳的值就是整個s, p的對比，也就是bool[s.Length, p.Length]
 
 ## #11_Container With Most Water
-###### Related Topics: `Two Pointers`
+###### Related Topics: `Array`、`Two Pointers`
 ### 目標
 給一組n個正整數的int陣列，意義是指座標(0, a<sub>0</sub>)\~(i, a<sub>i</sub>)，然後每個座標會向下垂值到X軸上形成多條直線。任兩條直線會形成一個容器，容量是兩直線距離(底)\*較低的直線(高)，回傳最大容量
 ### 求解
@@ -196,7 +196,7 @@
 4. 這個過程用try catch包起來，如果有意外代表IndexOfRange，可以直接回傳任一字串的sub(0, length)
 
 ## #15_3Sum
-###### Related Topics: `Hash Table`
+###### Related Topics: `Array`、`Two Pointers`
 ### 目標
 給一個int陣列nums找出所有3個數合為0的組合(不可重複)
 ### 求解
@@ -213,7 +213,7 @@
     - 這裡不用Dictionary，用sortedNums.LastIndexOf也是一樣意思但是速度會差很多，是AC跟超時的差距
 
 ## #17_Letter Combinations of a Phone Number
-###### Related Topics: `String`、`Backtracking`
+###### Related Topics: `String`、`Backtracking`、`Depth-first-Search`、`Recursion`
 ### 目標
 給一串由2\~9組成的字串digits，每個數可以對應3\~4個英文字母，回傳所有可能的英文字串
 | 2   | 3   | 4   | 5   | 6   | 7    | 8   | 9    |
@@ -229,7 +229,7 @@
 7. 因為舊的element還是不完全的組合所以記得要移除，但是迴圈中移除element又加入新的進去會形成無窮，所以j的中止條件不能用List.Count而是要用變數存著當下的Count來當條件。再來是移除的另一個影響，下個j會指到的element會到0的位置，所以取值移除的index用0就好
 
 ## #19_Remove Nth Node From End of List
-###### Related Topics: `Linked List`
+###### Related Topics: `Linked List`、`Two Pointers`
 ### 目標
 給一個LinkedList head跟n，把倒數第n個node移除再回傳回去
 ### 求解
@@ -241,7 +241,7 @@
     4. 如果preTarget是null代表n就是List長度，要移除的是head回傳head.next；否則把preTarget.next換成Target.next後回傳head
 
 ## #20_Valid Parentheses
-###### Related Topics: `Stack`
+###### Related Topics: `String`、`Stack`
 ### 目標
 給一個由()、{}、[] 組成的字串s，回傳s裡的括弧是否都有匹配
 ### 求解
@@ -251,7 +251,7 @@
 4. 結束後stack為空代表True
 
 ## #21_Merge Two Sorted Lists
-###### Related Topics: `Linked List`
+###### Related Topics: `Linked List`、`Resursion`
 ### 目標
 合併兩個有序List a, b為一個有序List
 ### 求解
@@ -260,7 +260,7 @@
 3. 第二、三次迴圈就是把a, b剩下的node接上去，最後回傳
 
 ## #22_Generate Parentheses
-###### Related Topics: `Backtracking`
+###### Related Topics: `String`、`Backtracking`
 ### 目標
 給一個數n，回傳所有可能的n對括號擺法，例如3:
 1. ((()))
@@ -282,7 +282,7 @@
     - 當右括號數量大於左括號，代表右括號放下去是有配對的，遞迴current+")", r-1
 
 ## #23_Merge k Sorted Lists
-###### Related Topics: `Linked List`、`Heap`
+###### Related Topics: `Linked List`、`Divide and Conquer`、`Heap`
 ### 目標
 給k個有序List合併為一個有序List
 ### 求解
@@ -301,7 +301,7 @@
 4. 結束後回傳result，伺服器那邊會比對nums的前result個值合不合要求
 
 ## #28_Implement strStr()
-###### Related Topics: `String`、`Two Point`
+###### Related Topics: `Two Point`、`String`
 ### 目標
 給兩個字串haystack, needle，求needle在haystack中出現的位置，例如hello, ll回傳2
 ### 求解
@@ -324,3 +324,97 @@
     2. 第二層迴圈，條件被除數大於等於temp<<1跟temp<<1大於0(數太大<<移位會產生負號，這時先跳出累加)，符合條件就讓temp跟mul<<
 8. 出來後要先檢查5.有沒有發生還有累加結果是不是int.Max，都是再檢查商的正負號看是回傳Max或Min
 9. 8.沒有就回傳正負號\*(累加+5.有發生累計1)
+
+## #33_Search in Rotated Sorted Array
+###### Related Topics: `Array`、`Binary Search`
+### 目標
+給一個被轉動過的有序數列nums，比如[0,1,2,4,5,6,7]以index3為中心轉動後變為[4,5,6,7,0,1,2]，可以當成把前n數整組搬到數列後面接上。然後再給一個target求出它在數列中所在的index，如果不存在則輸出-1。
+### 求解
+如果是一般的有序數列可以直接使用二元搜尋解決，但是nums有序的部分因為轉動變為兩部分，所以需要先找出兩部分的分界點在哪，然後再對nums以分界點切開的前半段或後半段做二元搜尋找出target並回傳index。這邊將流程分為三部分: 
+1. 找出分界點: 找的方法也是用二元搜尋，如果當下左右邊界中間切下去的位置，數值比右邊界的還大，那就代表這位置在分界點前面(觀察[4,5,6,7,0,1,2]，前半段最小的數會比後半段的任何數還大)，所以要更新左邊界到新位置來接近分界點，如果比右邊界的還小，則情況相反去更新右邊界到新位置，最後就能得出分界點。
+2. 判斷target可能在前半段或後半段: 如果target比後半段的最大值(同時也是最後一個位置的值)還大，代表可能出現的位置會在前半段，較小則在後半段(觀察一下數列應該就能了解)。
+3. 針對target可能出現的那部分做搜尋: 這裡就很單純了，target在前半段的情況做二元搜尋的左右邊界會是0跟分界點，後半段會是分界點跟陣列最後面。
+
+## #34_Find First and Last Position of Element in Sorted Array
+###### Related Topics: `Array`、`Binary Search`
+### 目標
+給一個漸增排序的數列nums，裡面的數字可能會重複比如[5,7,7,8,8,10]，再給一個target求出它在nums裡第一個跟最後一個出現的位置。回傳格式是兩格的int[]比如target8在[5,7,7,8,8,10]裡面的頭尾位置是[3, 4]，找不到則回傳[-1, -1]。
+### 求解
+直覺的想法是用二元搜尋去找出target所在的頭尾位置，不過這邊要稍微調整使用的方式，一般來說在迴圈的過程中找到target就會break/return，但是這裡我們要繼續跑下去，讓左右邊界相撞(也就是index相同)後再結束迴圈，最後一次符合target的位置將會是目標要的first或last。<br>
+讓找的index是first或last的關鍵在於更新左右邊界的方式，如過這次要找的是first，要把右邊界更新的條件設為>=target(通常的二元搜尋會寫成>target)，這樣子重複找到的target會讓右邊界慢慢往左(因為等於target也要左移)，最後一次找到target的index就會是first。找last的概念也一樣，將左邊界條件改為<=target，做完這兩次二元搜尋後的first跟last就會是題目所要的。
+
+## #36_Valid Sudoku
+###### Related Topics: `Hash Table`
+### 目標
+給一個char的二位陣列代表一個數獨，然後去檢查這個數獨有沒有符合規則(每行、每列、每個小九宮格都不能有重複的數字)。
+### 求解
+直覺的想法是一邊掃描(雙for迴圈)數獨一邊檢查有沒有違規(能掃完代表整格合法)，這邊可以根據規則分別建立儲存列、行、小九宮格用的容器(List)，當新掃到的元素跟容器內的有產生重複就代表違規了。<br>
+問題在於容器的形式，這個又跟掃描的方式有點關係，假設內迴圈代表掃描列那列可以用一個單純的List就好(內迴圈做完記得清空)；行的部分因為是用外迴圈更新所以一次內迴圈做完的當下還不會有整行的內容，所以紀錄行的List要宣告成大小9的List陣列來保留列的內容；小九宮格跟行同理，也是沒辦法再做完內迴圈的當下知道，要圈告成3*3的List陣列。<br>
+釐清儲存的方式後就是檢查的時機了，在內迴圈裡找到新元素時對三種List檢查有沒有Contains就好。
+
+## #38_Count and Say
+###### Related Topics: `String`
+### 目標
+say是一種會產生字串的行為。預設的字串為"1"，也就是第一次say會產生"1"，之後的say則會開始照規則產生新字串，舉例來說3322251這字串，因為2個3、3個2、1個5跟1個1，所以新字串是23321511。<br>
+題目會給一個n，回傳say n次後得到的字串。
+### 求解
+流程很簡單，照從"1"開始照規則造字串n次就行。所以會有個外迴圈跑n次，迴圈內分析當下的say字串有幾個數字a、數字b、數字c...，然後把各別的次數跟對應的a、b、c...串起來後更新say，下次的迴圈再用新的say去做更新的say。
+
+## #41_First Missing Positive
+###### Related Topics: `Array`
+### 目標
+給一個無序整數數列nums，找到第一個缺少的正整數。比如[3,4,-1,1]缺少的是2。
+### 求解
+直覺的想法是將nums排序後做掃描來找目標，比如[4,1,2]排序完變[1,2,4]，之後發現2後面不是3來找到缺失的數是3，觀察[1,2,4]會發現nums內容會跟index差不多，index0是1、index1是2，再來index2是4剛好就是答案，所以可以得出結論: 從index0開始判斷，如果nums[index]-1!=index那這個index原本應該要對應的數(index+1)會是答案。<br>
+接下來的問題是如和把[4,1,2]轉為[1,2,4]，考慮到可能有小於1的情況值接排序是不可行的，這裡可以利用index，以迴圈遍歷nums遇到1就把1放到index0、2則放到index1這樣以此類推，遇到小於1或值太大會造成index越界的情況就跳過，之後再掃描數列遇到nums[index]-1!=index那index+1就是答案，因為這代表遍歷的過程並沒有找到對應的數，那個位置內容自然不會跟index有對應。
+
+## #42_Trapping Rain Water
+###### Related Topics: `Array`、`Two Pointers`、`Dynamic Programming`、`Stack`
+### 目標
+給一個非負數列height代表地形高度，而地形之間形成的凹洞可以積水，求出height可以累積的水量。
+### 求解
+首先要知道求出每格位置能累積的水的方法，以題目範例圖來說height[4]可以積的水是1，這是因為這個位置左右最高的地形分別是2跟3，然後取較矮高度2再減去自身高度1來得出1，結論某位置a的水量會是min(maxL, maxR)-height[a]。<br>
+接下來的問題是如何去跑遍歷height去累計全部位置的積水，這題可以從暴力法開始再改善成DP最後變雙指針:<br> 
+1. 暴力法: 計算每格積水時都去找一次maxL、maxR來計算，但是要找的值有時會重複，所以可以改成DP。
+2. DP: 用兩個陣列(左右各一)去記住當下位置的maxL、maxR，之後計算值接從陣列拉值就好。那要怎麼得出這兩個陣列呢?以左邊來說，height[0]最高會是自己因為再左邊就沒東西了，之後從index1開始遍歷height，去比較現在位置跟前個位置哪個比較高然後放進陣列裡就可以了，右邊同理。
+3. 雙指針: 用兩個指針(l、r)代表目前指到的位置、兩個數(maxL、maxR)紀錄目前左右最高的值，如果maxL較小那就累計水量maxL-height[l](這邊不用擔心右邊資訊不完整的問題，因為計算上就是用較小的那邊來算)，之後嘗試更新maxL、l指針往右逼近。如果是maxR較小那同理，用maxR、height[r]計算，算完更新maxR、r往左逼值，這個過程持續到l、r撞上為止，累計的水量就是答案。
+
+## #44_Wildcard Matching
+###### Related Topics: `String`、`Dynamic Programming`、`Backtracking`、`Greedy`
+### 目標
+這題跟#10有87%像，只是pattern的定義有些差別。給兩個字串s、p，s是由a~z組成的字串，p則是除a~z外還會參雜?(任何單一字母)、\*(任何長度的字串)的表達式，然後求s有沒有符合p。<br>
+### 求解
+1. 問題結構: 根據p的字元可能情況有4種
+    1. 空字串: 如過s也是空字串那就是true，不是一律都是false
+    2. a~Z: s、p都是單一字元的情況就單純看兩個字元是否相同，當問題變大時(s、p都有多個字元)先比對兩者最後的字元是否相同，再去看兩者最後字元以前的部分是否匹配
+    3. ?: 跟字母的情況一樣，只是單一字元不用比一定對
+    4. \*: 情況有兩種，如果\*對應過去會代表空字串，比如s: aa、p: aa\*，那會用p在\*之前的部分跟整個s比對(aa對aa)；如果有代表一串數，比如s: axyz、p: a*，則是用s排除最後一個字元的字串跟p比對會是axy對a*，看到這邊會想這不是跟前一次的狀況一樣嗎?先倒過來想從ax比a\*開始會是a對a\*，這樣就回到\*代表空字串的情境所以確定它是對的，往後推axy比a\*會是ax對a\*，因為前一次已經確認過了所以這次也能確定它是對的，以此類推axyz跟a\*就會是匹配的
+2. 應用: 這邊就很直覺的用二維布林陣列(dp[,])代表i長度的s跟j長度的p是否匹配，因為要含空字串情況所以陣列長度要是字串長度加一。注意預設值dp[0,0]為true，還有p開頭就是一串\*的情況也要先刷進去，填表完後dp[s.Length,p.Length]就是答案。
+
+## #46_Permutations
+###### Related Topics: `Backtracking`
+### 目標
+給一個數列nums，求出所有元素排列的可能(這些可能的順序不影響結果)，例如nums[1,2,3]的可能排序為[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]。
+### 求解
+這裡可以用遞迴去做，傳遞的參數有三個: nums剩下的元素(restElement)、正在組成某個排序的數列(current)與紀錄答案的容器(result)。每次的遞迴都會遍歷restElement，把某個元素restElement[i]拔掉並串在current後面，然後再遞迴值到restElement空了為止，這時的current就能加進result。這裡要注意處理restElement、current要用複製的一份資料來作，不然遍歷的過程中restElement、current都會被打亂。
+
+## #48_Rotate Image
+###### Related Topics: `array`
+### 目標
+給一個二維陣列來代表一個矩陣，把矩陣順時針旋轉90度後回傳。只能修改題目給的矩陣而不能開心的陣列來處理。
+### 求解
+解題的關鍵就在迴圈怎麼跑可以讓元素的交換形成題目要的旋轉。方式有兩種，這邊講過程比較值觀的一種(兩種都可以再Solution那邊看)，以左上右下的斜線當軸互換元素一次，再左右水平翻轉元素一次就會等於順時針旋轉90度一次。
+
+## #49_Group Anagrams
+###### Related Topics: `Hash Table`、`String`
+### 目標
+給一個string陣列代表，把裡面的字串分類成各種anagrams(組成的元素相同但順序不一樣比如: ate、eat、tea)。
+### 求解
+收先要先知道分類的方式，再去作歸類的動作，這邊分兩步驟: 
+1. 兩字串是否為同類anagrams: 組成的元素相同代表排序完後會一模一樣，至於排序的方法可以將string先轉為array，再用Array.sort()排完再轉回string
+2. 如何歸類: 這裡用Dictionary來當容器，key是排序完的字串，value則是一個List，如果這次排序完的字串有被containsKey那就丟進那個key的List裡，沒有就開一個新key並把這個字串丟進去，最後把Dictionary組回題目要的格式就行了
+
+## #Num_ProblemName
+###### Related Topics: `tag`
+### 目標
+### 求解
